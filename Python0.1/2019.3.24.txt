@@ -1,0 +1,85 @@
+1.
+进程和线程
+线程是最小的执行单元，而进程由至少一个线程组成。如何调度进程和线程，完全由操作系统决定，程序自己不能决定什么时候执行，执行多长时间。
+多进程和多线程的程序涉及到同步、数据共享的问题，编写起来更复杂。
+
+2.
+Python中的bs4模块
+bs4 模块的 BeautifulSoup 可以用来爬取html页面的内容，配合requests库可以用于简单的爬虫。
+
+3.
+python的os模块
+ 在自动化测试中，经常需要查找操作文件，比如说查找配置文件（从而读取配置文件的信息），查找测试报告（从而发送测试报告邮件），经常要对大量文件和大量路径进行操作，这就依赖于os模块
+
+比较常用的几个方法
+1）.当前路径及路径下的文件
+
+os.getcwd()：查看当前所在路径。
+
+os.listdir(path):列举目录下的所有文件。返回的是列表类型。
+
+>>> import os
+>>> os.getcwd()
+'D:\\pythontest\\ostest'
+>>> os.listdir(os.getcwd())
+['hello.py', 'test.txt']
+ 
+
+2）.绝对路径
+
+os.path.abspath(path):返回path的绝对路径。
+
+>>> os.path.abspath('.')
+'D:\\pythontest\\ostest'
+>>> os.path.abspath('..')
+'D:\\pythontest'
+ 
+
+3）.查看路径的文件夹部分和文件名部分
+
+os.path.split(path):将路径分解为(文件夹,文件名)，返回的是元组类型。可以看出，若路径字符串最后一个字符是\,则只有文件夹部分有值；若路径字符串中均无\,则只有文件名部分有值。若路径字符串有\，且不在最后，则文件夹和文件名均有值。且返回的文件夹的结果不包含\.
+
+os.path.join(path1,path2,...):将path进行组合，若其中有绝对路径，则之前的path将被删除。
+
+复制代码
+>>> os.path.split('D:\\pythontest\\ostest\\Hello.py')
+('D:\\pythontest\\ostest', 'Hello.py')
+>>> os.path.split('.')
+('', '.')
+>>> os.path.split('D:\\pythontest\\ostest\\')
+('D:\\pythontest\\ostest', '')
+>>> os.path.split('D:\\pythontest\\ostest')
+('D:\\pythontest', 'ostest')
+>>> os.path.join('D:\\pythontest', 'ostest')
+'D:\\pythontest\\ostest'
+>>> os.path.join('D:\\pythontest\\ostest', 'hello.py')
+'D:\\pythontest\\ostest\\hello.py'
+>>> os.path.join('D:\\pythontest\\b', 'D:\\pythontest\\a')
+'D:\\pythontest\\a'
+复制代码
+ os.path.dirname(path):返回path中的文件夹部分，结果不包含'\'
+
+复制代码
+>>> os.path.dirname('D:\\pythontest\\ostest\\hello.py')
+'D:\\pythontest\\ostest'
+>>> os.path.dirname('.')
+''
+>>> os.path.dirname('D:\\pythontest\\ostest\\')
+'D:\\pythontest\\ostest'
+>>> os.path.dirname('D:\\pythontest\\ostest')
+'D:\\pythontest'
+复制代码
+ os.path.basename(path):返回path中的文件名。
+
+复制代码
+>>> os.path.basename('D:\\pythontest\\ostest\\hello.py')
+'hello.py'
+>>> os.path.basename('.')
+'.'
+>>> os.path.basename('D:\\pythontest\\ostest\\')
+''
+>>> os.path.basename('D:\\pythontest\\ostest')
+'ostest'
+
+4.
+

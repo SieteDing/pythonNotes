@@ -1,0 +1,13 @@
+requests
+安装：我安装了anaconda，一劳永逸
+
+1. 通过get访问一个页面：
+>>>import requests
+>>>r=requests.get('https://douban.com/')   #requests.get()获取网页，对应HTTP中的GET方法。豆瓣首页，r是一个Response对象，一个包含服务器资源的对象,Request对象包含爬虫返回的内容。
+>>>r.status_code  #HTTP请求返回状态码，200表示成功
+200
+>>>r.text
+r.text    #HTTP响应的字符串形式，即，url对应的页面内容
+>>> r.encoding
+'utf-8'    #requests自动检测编码，可以使用encoding属性查看 
+2.

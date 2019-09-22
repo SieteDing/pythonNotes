@@ -1,0 +1,16 @@
+1.
+python中单引号双引号三引号的区别
+（忘了就百度）
+https://blog.csdn.net/woainishifu/article/details/76105667
+
+2.
+setheading(to_angle）和 seth (to_angle)一样
+参数：to_angle ：一个数字（整数或浮点数）
+将乌龟的方向设置为to_angle。以下是度数的一些常见方向
+标准模式	徽标模式
+0 - 东	0 - 北
+90-北	90-东
+180-西	180-南
+270 - 南	270 - 西
+
+3.

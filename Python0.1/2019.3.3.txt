@@ -1,0 +1,49 @@
+1.
+递归函数
+def fact(n):
+	if n==1:
+		return 1
+	return n*fact(n-1)
+2.
+**尾递归函数，尾递归是指，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。
+def fact(n):
+	return fact_iter(n,1)
+
+def fact_iter(num,product):
+	if num==1:
+		return product
+	return fact_iter(num-1,num*product)
+3.
+循环函数
+def fact(n):
+	int sum=1
+	for(int i=1;i<=n;i++):
+		sum*=i
+	return sum
+4.
+汉诺塔
+def move(n, a, b, c):
+    if n == 1:
+        print(a, '-->', c)
+    move(n-1,a,c,b)
+    move(1,a,b,c)
+    move(n-1,b,a,c)
+move(3, 'A', 'B', 'C')
+5.
+切片 【slice】
+L[0:3]表示，从索引0开始取，直到索引3为止，但不包括索引3。即索引0，1，2，正好是3个元素
+如果第一个索引是0，还可以省略：L[:3]
+类似的，既然Python支持L[-1]取倒数第一个元素，那么它同样支持倒数切片:
+6.
+使用内建的isinstance函数判断一个变量是不是字符串
+>>>isinstance(18,str)
+>>>False
+7.
+生成器generator
+是什么？
+优点？
+写法？
+怎么打印？
+8.
+except是捕获异常
+https://blog.csdn.net/lina_acm/article/details/54808910

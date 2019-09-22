@@ -1,0 +1,55 @@
+1.
+open的encoding参数，errors参数
+
+2.
+STringIO和BytesIO
+StringIO顾名思义就是在内存中读写str。
+
+StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。
+BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：
+>>> from io import BytesIO
+>>> f = BytesIO()
+>>> f.write('中文'.encode('utf-8'))
+6
+>>> print(f.getvalue())
+b'\xe4\xb8\xad\xe6\x96\x87'
+请注意，写入的不是str，而是经过UTF-8编码的bytes。
+
+
+                                                        【操作文件和目录】
+3.
+如果我们要操作文件、目录，可以在命令行下面输入操作系统提供的各种命令来完成。比如dir、cp等命令。
+如果要在Python程序中执行这些目录和文件的操作怎么办？其实操作系统提供的命令只是简单地调用了操作系统提供的接口函数，Python内置的os模块也可以直接调用操作系统提供的接口函数。
+4.
+环境变量
+在操作系统中定义的环境变量，全部保存在os.environ这个变量中，可以直接查看
+要获取某个环境变量的值，可以调用os.environ.get('key')
+
+5.
+操作文件和目录
+操作文件和目录的函数一部分放在os模块中，一部分放在os.path模块中，这一点要注意一下。查看、创建和删除目录可以这么调用
+# 查看当前目录的绝对路径:
+>>> os.path.abspath('.')
+# 在某个目录下创建一个新目录，首先把新目录的完整路径表示出来:
+>>> os.path.join('/Users/michael', 'testdir')
+# 然后创建一个目录:
+>>> os.mkdir('/Users/michael/testdir')
+# 删掉一个目录:
+>>> os.rmdir('/Users/michael/testdir')
+
+6.
+把两个路径合成一个时，不要直接拼字符串，而要通过os.path.join()函数，这样可以正确处理不同操作系统的路径分隔符。（可用于在当前目录下创建一个目录）
+
+7.
+同样的道理，要拆分路径时，也不要直接去拆字符串，而要通过os.path.split()函数，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名
+
+os.path.splitext()可以直接让你得到文件扩展名，很多时候非常方便：
+>>> os.path.splitext('/path/to/file.txt')
+('/path/to/file', '.txt')
+
+8.
+如何通过python的特性来过滤文件，比如：
+①列出当前目录下的所有目录（只需要一行代码）：
+[x for x in os.listdir('.') if os.path.isdir(x)]
+②列出当前目录下所有的.py文件（也只需要一行代码）：
+[x for x in os.listdir('.') if os.path.isfile(x) and os.path.split(x)[1]=='.py']

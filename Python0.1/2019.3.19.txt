@@ -1,0 +1,18 @@
+使用@property
+1.
+复习一下装饰器，学得都忘了
+装饰器decorator，是一种在函数运行期间，动态地给它增加功能的方式
+
+本质上，decorator是一个返回函数的高阶函数，它接收一个函数作为参数，并返回一个函数。
+
+2.
+python中*args **kw到底是什么意思？
+*args是非关键字参数，用于元组，**kw是关键字参数，用于字典
+这两个是python中的可变参数。*args表示任何多个无名参数，它是一个tuple；**kw表示关键字参数，它是一个dict。并且同时使用*args和**kw时，必须*args参数列要在**kw前，像foo(a=1, b='2', c=3, a', 1, None, )这样调用的话，会提示语法错误“SyntaxError: non-keyword arg after keyword arg”。
+
+3.
+把一个getter方法变成属性，只需要加上@property就可以了，此时，@property本身又创建了另一个装饰器@score.setter，负责把一个setter方法变成属性赋值
+
+4.
+类中为什么要定义__init__()方法： def __intit__(self)，作用是将实例初始化。
+https://blog.csdn.net/geerniya/article/details/77487941
